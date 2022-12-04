@@ -35,7 +35,9 @@ class Api::V1::SessionsController < Api::V1::BaseController
 
   def fetch_jwt_token(user)
     # 1. - Create a JWT with user's information
-    payload = {user_id: user.id}
+    # 2. - set expiration date to 7 days from now
+    payload = { user_id: user.id, exp: 7.days.from_now.to_i }
+
     JWT.encode(payload, HMAC_SECRET, 'HS256')
   end
 
@@ -44,5 +46,11 @@ class Api::V1::SessionsController < Api::V1::BaseController
     user.role = 'audience' if user.role.nil?
     user.avatar_url = 'http://chuantu.xyz/t6/742/1669965816x2890373782.png' if user.avatar_url.nil?
     user.save
+  end
+
+  def jwt_encode
+    payload[:exp] = 7.days.from_now.to_i # set expiration date to 7 days from now
+
+    JWT.encode payload, HMAC_SECRET, 'HS256'
   end
 end

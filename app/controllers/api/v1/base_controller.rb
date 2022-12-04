@@ -2,7 +2,11 @@ class Api::V1::BaseController < ActionController::Base
   skip_before_action :verify_authenticity_token
   before_action :verify_request
 
-  HMAC_SECRET = Rails.application.credentials.dig(:jwt, :hmac_secret) # find the secret
+  # find the secret
+  HMAC_SECRET = Rails.application.credentials.dig(:jwt, :hmac_secret)
+
+  # When token is expired, JWT::ExpiredSignature error will be raised
+  rescue_from JWT::ExpiredSignature, with: :render_unauthorize
 
   private
 
@@ -27,5 +31,9 @@ class Api::V1::BaseController < ActionController::Base
   # retrieve token from headers
   def fetch_jwt_token
     request.headers['Authorization']
+  end
+
+  def render_unauthorized
+    render json: { error: 'token expired' }, status: 401
   end
 end
