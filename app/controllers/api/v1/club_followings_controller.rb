@@ -9,7 +9,7 @@ class Api::V1::ClubFollowingsController < Api::V1::BaseController
     club_following.user = @current_user
 
     if @club_following.save
-      render json: { club_following:  }
+      render json: { club_following: }
     else
       render json: club_following.errors, status: :unprocessable_entity
     end
