@@ -10,12 +10,12 @@ class Api::V1::ShowsController < Api::V1::BaseController
         OR clubs.name ILIKE :query
       SQL
 
-      shows = Show.joins(:club).where(sql_query, query: "%#{params[:query]}%")
+      @shows = Show.joins(:club).where(sql_query, query: "%#{params[:query]}%")
     else
-      shows = Show.all
+      @shows = Show.includes(:club).all
     end
 
-    render json: { shows: }
+    # render json: { shows: }
   end
 
   def show
