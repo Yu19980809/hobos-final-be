@@ -47,7 +47,6 @@ class Api::V1::SessionsController < Api::V1::BaseController
   def user_info(user)
     user.nickname = '路人甲' if user.nickname.nil?
     user.role = 'audience' if user.role.nil?
-    user.avatar_url = 'http://chuantu.xyz/t6/742/1669965816x2890373782.png' if user.avatar_url.nil?
     user.save
   end
 
