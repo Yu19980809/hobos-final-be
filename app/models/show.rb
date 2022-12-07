@@ -1,4 +1,6 @@
 class Show < ApplicationRecord
+  has_one_attached :poster
+
   belongs_to :club
 
   # for comedian

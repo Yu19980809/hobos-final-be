@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_one_attached :avatar
+
   # for comedian
   has_many :show_comedians
 
