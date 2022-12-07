@@ -32,6 +32,9 @@ class Api::V1::BaseController < ActionController::Base
       data = jwt_decode(token)
       user_id = data[:user_id]
       @current_user = User.find(user_id) # set current user by user_id in JWT payload
+      puts "------------current_user-----------"
+      puts @current_user.id
+      puts "------------current_user-----------"
     else
       render json: { error: 'Missing JWT token.' }, status: 401
     end
