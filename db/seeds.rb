@@ -1,11 +1,11 @@
 puts "deleting all previous data"
-User.destroy_all
-Club.destroy_all
-Show.destroy_all
 Booking.destroy_all
 ShowComedian.destroy_all
+Show.destroy_all
 ClubFollowing.destroy_all
 ComedianFollowing.destroy_all
+Club.destroy_all
+User.destroy_all
 puts "finished deleting"
 
 puts "creating new data"

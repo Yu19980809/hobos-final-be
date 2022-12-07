@@ -30,6 +30,9 @@ class Api::V1::SessionsController < Api::V1::BaseController
     # 3. - Send a request to Tencent API with app_id, app_secret, and the code
     url = "https://api.weixin.qq.com/sns/jscode2session?appid=#{app_id}&secret=#{app_secret}&js_code=#{code}&grant_type=authorization_code"
     response = RestClient.get(url)
+    puts "---------------------------------"
+    puts response
+    puts "---------------------------------"
     JSON.parse(response)['openid']
   end
 
