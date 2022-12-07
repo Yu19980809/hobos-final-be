@@ -1,3 +1,15 @@
+puts "deleting all previous data"
+Booking.destroy_all
+ShowComedian.destroy_all
+Show.destroy_all
+ClubFollowing.destroy_all
+ComedianFollowing.destroy_all
+Club.destroy_all
+User.destroy_all
+puts "finished deleting"
+
+puts "creating new data"
+
 User.create!(nickname: "路人甲", avatar_url: "https://tes.png", role: "audience")
 User.create!(nickname: "路人乙", avatar_url: "https://tes.png", role: "comedian")
 User.create!(nickname: "路人丙", avatar_url: "https://tes.png", role: "holder")
@@ -13,3 +25,6 @@ ShowComedian.create!(show: Show.first, user: User.find_by(role: "comedian"))
 ClubFollowing.create!(user: User.find_by(role: "comedian"), club: Club.first)
 
 ComedianFollowing.create!(user: User.find_by(role: "audience"), comedian: User.find_by(role: "comedian"))
+
+
+puts "finished creating"
