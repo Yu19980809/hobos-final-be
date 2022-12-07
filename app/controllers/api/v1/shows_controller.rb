@@ -14,8 +14,6 @@ class Api::V1::ShowsController < Api::V1::BaseController
     else
       @shows = Show.includes(:club).all
     end
-
-    # render json: { shows: }
   end
 
   def show
@@ -27,7 +25,7 @@ class Api::V1::ShowsController < Api::V1::BaseController
     if show.save
       render json: { show: }
     else
-      render json: @show.errors, status: :unprocessable_entity
+      render json: show.errors, status: :unprocessable_entity
     end
   end
 
