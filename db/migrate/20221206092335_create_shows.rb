@@ -3,7 +3,7 @@ class CreateShows < ActiveRecord::Migration[7.0]
     create_table :shows do |t|
       t.string :name
       t.text :description
-      t.string :data
+      t.string :date
       t.string :start_time
       t.string :end_time
       t.string :address
