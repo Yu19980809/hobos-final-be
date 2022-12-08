@@ -10,8 +10,11 @@ class Api::V1::BookingsController < Api::V1::BaseController
   end
 
   def index
-    bookings = Booking.where(user: @current_user)
-    render json: { bookings: }
+    @shows = []
+    @bookings = Booking.where(user: @current_user)
+    @bookings.each do |booking|
+      @shows.unshift(booking.show)
+    end
   end
 
   def destroy
