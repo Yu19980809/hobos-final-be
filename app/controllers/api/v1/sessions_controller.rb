@@ -14,7 +14,12 @@ class Api::V1::SessionsController < Api::V1::BaseController
     token = fetch_jwt_token(user)
 
     response.set_header('Authorization', token)
-    render json: { user: }
+
+    if user.avatar.attached?
+      render json: { user:, avatar: url_for(user.avatar) }
+    else
+      render json: { user:, avatar: 'https://hobos-final.oss-cn-shanghai.aliyuncs.com/default-avatar.jpg' }
+    end
   end
 
   private
