@@ -14,20 +14,33 @@ class Api::V1::ShowsController < Api::V1::BaseController
     else
       @shows = Show.includes(:club).all
     end
-
-    # render json: { shows: }
   end
 
   def show
-    render json: { show: @show }
+    # members
+    @members = @show.users
+
+    # show_comedians
+    @comedians = []
+    @show.show_comedians.each do |sc|
+      @comedians.push(sc.user)
+    end
+
+    # booking
+    @booking = Booking.find_by(show: @show, user: @current_user)
   end
 
   def create
     show = Show.new(show_params)
+
     if show.save
-      render json: { show: }
+      if show.poster.attached?
+        render json: { show:, poster: url_for(show.poster) }
+      else
+        render json: { show:, poster: 'https://hobos-final.oss-cn-shanghai.aliyuncs.com/default-poster.jpg' }
+      end
     else
-      render json: @show.errors, status: :unprocessable_entity
+      render json: show.errors, status: :unprocessable_entity
     end
   end
 
