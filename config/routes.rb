@@ -8,6 +8,7 @@ Rails.application.routes.draw do
         resources :bookings, only: :index
         resources :club_followings, only: :index
         resources :comedian_followings, only: :index
+        get 'created_shows', to: 'users#shows', as: :created_shows
       end
       resources :bookings, only: %i[create destroy]
       resources :club_followings, only: %i[create destroy]
