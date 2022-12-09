@@ -1,5 +1,4 @@
 class Api::V1::ShowsController < Api::V1::BaseController
-  respond_to :json
   before_action :set_show, only: %i[show update destroy]
 
   def index
