@@ -22,6 +22,12 @@ class Api::V1::BaseController < ActionController::Base
     else
       response = { error: "Internal Server Error", message: exception.message }
     end
+    puts "----------exception----------"
+    puts exception
+    puts "----------exception----------"
+    puts "----------env----------"
+    puts Rails.env
+    puts "----------env----------"
     render json: response, status: :internal_server_error
   end
 
