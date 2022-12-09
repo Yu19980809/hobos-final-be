@@ -17,11 +17,17 @@ class Api::V1::BaseController < ActionController::Base
   end
 
   def internal_server_error(exception)
-    if Rails.env.development?
+    if Rails.env.development? || Rails.env.production?
       response = { type: exception.class.to_s, error: exception.message }
     else
-      response = { error: "Internal Server Error" }
+      response = { error: "Internal Server Error", message: exception.message }
     end
+    puts "----------exception----------"
+    puts exception
+    puts "----------exception----------"
+    puts "----------env----------"
+    puts Rails.env
+    puts "----------env----------"
     render json: response, status: :internal_server_error
   end
 

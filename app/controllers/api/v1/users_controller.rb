@@ -4,6 +4,13 @@ class Api::V1::UsersController < Api::V1::BaseController
     render json: { user: @current_user }
   end
 
+  def shows
+    @shows = []
+    @current_user.clubs.each do |club|
+      @shows.concat(Show.where(club:))
+    end
+  end
+
   private
 
   def user_params
