@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  namespace :api do
+  namespace :api, defaults: { format: :json } do
     namespace :v1 do
       post 'login', to: 'sessions#login', as: :login
       resources :shows, only: %i[index show create update destroy]
