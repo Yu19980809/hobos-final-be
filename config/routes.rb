@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       post 'login', to: 'sessions#login', as: :login
       resources :shows, only: %i[index show create update destroy]
-      resources :clubs, only: %i[create]
+      resources :clubs, only: %i[index create]
       resources :users, only: %i[update] do
         resources :bookings, only: :index
         resources :club_followings, only: :index
@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       resources :club_followings, only: %i[create destroy]
       resources :comedian_followings, only: %i[create destroy]
       resources :show_comedians, only: %i[create destroy]
+      get 'comedians', to: 'users#comedians', as: :comedians
     end
   end
 end
