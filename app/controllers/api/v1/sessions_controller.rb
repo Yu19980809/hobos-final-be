@@ -9,17 +9,12 @@ class Api::V1::SessionsController < Api::V1::BaseController
     # 4 - Send a JWT that stores user information to MP
 
     open_id = fetch_open_id
-    user = User.find_or_create_by(open_id:)
-    user_info(user)
-    token = fetch_jwt_token(user)
+    @user = User.find_or_create_by(open_id:)
+    token = fetch_jwt_token(@user)
+    user_info(@user)
+    fetch_following(@user)
 
     response.set_header('Authorization', token)
-
-    if user.avatar.attached?
-      render json: { user:, avatar: url_for(user.avatar) }
-    else
-      render json: { user:, avatar: 'https://hobos-final.oss-cn-shanghai.aliyuncs.com/default-avatar.jpg' }
-    end
   end
 
   private
@@ -53,6 +48,21 @@ class Api::V1::SessionsController < Api::V1::BaseController
     user.nickname = '路人甲' if user.nickname.nil?
     user.role = 'audience' if user.role.nil?
     user.save
+  end
+
+  def fetch_following(user)
+    case user.role
+    when 'comedian'
+      @comedian_followers = []
+      ComedianFollowing.all.each do |cf|
+        @comedian_followers.push(cf) if cf.comedian.id == user.id
+      end
+    when 'holder'
+      @club_followers = []
+      ClubFollowing.all.each do |cf|
+        @club_followers.push(cf) if user.clubs.include?(cf.club)
+      end
+    end
   end
 
   def jwt_encode
