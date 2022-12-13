@@ -16,7 +16,7 @@ class Api::V1::ComedianFollowingsController < Api::V1::BaseController
   end
 
   def destroy
-    comedian_following = ComedianFollowing.find(params[:id])
+    comedian_following = ComedianFollowing.where(comedian_id: params[:comedian_id], user: @current_user)[0]
     comedian_following.destroy
     render json: { message: 'Deleted successfully' }
   end

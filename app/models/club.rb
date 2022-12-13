@@ -1,6 +1,6 @@
 class Club < ApplicationRecord
-  has_many :shows
-  has_many :club_followings
+  has_many :shows, dependent: :destroy
+  has_many :club_followings, dependent: :destroy
 
   # for holder
   belongs_to :user
