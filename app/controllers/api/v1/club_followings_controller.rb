@@ -16,8 +16,8 @@ class Api::V1::ClubFollowingsController < Api::V1::BaseController
   end
 
   def destroy
-    @club_following = ClubFollowing.find(params[:id])
-    @club_following.destroy
+    club_following = ClubFollowing.where(club_id: params[:club_id], user: @current_user)[0]
+    club_following.destroy
     render json: { message: 'Deleted successfully' }
   end
 

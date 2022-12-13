@@ -12,6 +12,7 @@ class Api::V1::SessionsController < Api::V1::BaseController
     @user = User.find_or_create_by(open_id:)
     token = fetch_jwt_token(@user)
     user_info(@user)
+    fetch_follower(@user)
     fetch_following(@user)
 
     response.set_header('Authorization', token)
@@ -50,7 +51,7 @@ class Api::V1::SessionsController < Api::V1::BaseController
     user.save
   end
 
-  def fetch_following(user)
+  def fetch_follower(user)
     case user.role
     when 'comedian'
       @comedian_followers = []
@@ -60,8 +61,21 @@ class Api::V1::SessionsController < Api::V1::BaseController
     when 'holder'
       @club_followers = []
       ClubFollowing.all.each do |cf|
-        @club_followers.push(cf) if user.clubs.include?(cf.club)
+        @club_followers.push(cf) if user.clubs[0].id == cf.club.id
       end
+    end
+  end
+
+  def fetch_following(user)
+    @followed_comedians = []
+    @followed_clubs = []
+
+    user.comedian_followings.each do |cf|
+      @followed_comedians.unshift(cf.comedian)
+    end
+
+    user.club_followings.each do |cf|
+      @followed_clubs.unshift(cf.club)
     end
   end
 
