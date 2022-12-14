@@ -10,7 +10,11 @@ class Api::V1::ShowComediansController < Api::V1::BaseController
   end
 
   def destroy
-    show_comedian = ShowComedian.find(params[:id])
+    if params[:show_id]
+      show_comedian = ShowComedian.find_by(show_id: params[:show_id], user_id: params[:comedian_id])
+    else
+      show_comedian = ShowComedian.find(params[:id])
+    end
     show_comedian.destroy
     render json: { message: 'Deleted successfully' }
   end

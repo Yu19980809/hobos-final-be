@@ -11,6 +11,7 @@ json.show do
 
   json.comedians @comedians do |comedian|
     json.id comedian.id
+    json.nickname comedian.nickname
     json.avatar comedian.avatar.attached? ? url_for(comedian.avatar) : 'https://hobos-final.oss-cn-shanghai.aliyuncs.com/default-avatar.jpg'
   end
 end
