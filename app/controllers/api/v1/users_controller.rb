@@ -1,4 +1,12 @@
 class Api::V1::UsersController < Api::V1::BaseController
+  def show
+    @comedian = User.find(params[:id])
+    @shows = []
+    ShowComedian.where(user: @comedian).each do |sc|
+      @shows.unshift(sc.show)
+    end
+  end
+
   def update
     @current_user.update(user_params)
     render json: { user: @current_user }
