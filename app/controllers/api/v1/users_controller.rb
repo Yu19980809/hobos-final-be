@@ -24,6 +24,11 @@ class Api::V1::UsersController < Api::V1::BaseController
     @comedians = User.where(role: 'comedian')
   end
 
+  def infos
+    fetch_following(@current_user)
+    fetch_follower(@current_user)
+  end
+
   private
 
   def user_params
