@@ -1,9 +1,9 @@
 json.user do
-  json.extract! @user, :id, :nickname, :open_id, :role, :slogan, :experience
+  json.extract! @current_user, :id, :nickname, :open_id, :role, :slogan, :experience
   json.comedian_followers @comedian_followers
   json.club_followers @club_followers
-  json.club @user.clubs[0]
-  json.avatar @user.avatar.attached? ? url_for(@user.avatar) : 'https://hobos-final.oss-cn-shanghai.aliyuncs.com/default-avatar.jpg'
+  json.club @current_user.role == 'holder' ? @current_user.clubs[0] : []
+  json.avatar @current_user.avatar.attached? ? url_for(@current_user.avatar) : 'https://hobos-final.oss-cn-shanghai.aliyuncs.com/default-avatar.jpg'
 
   json.followed_comedians @followed_comedians do |comedian|
     json.extract! comedian, :id, :nickname, :slogan, :role, :experience
