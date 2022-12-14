@@ -8,6 +8,13 @@ class Api::V1::ClubsController < Api::V1::BaseController
     @shows = @club.shows
   end
 
+  def update
+    club = Club.find(params[:id])
+    club.update(club_params)
+
+    render json: { club: }
+  end
+
   def create
     club = Club.new(club_params)
     club.user = @current_user
