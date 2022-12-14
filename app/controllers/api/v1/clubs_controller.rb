@@ -3,6 +3,11 @@ class Api::V1::ClubsController < Api::V1::BaseController
     @clubs = Club.all
   end
 
+  def show
+    @club = Club.find(params[:id])
+    @shows = @club.shows
+  end
+
   def create
     club = Club.new(club_params)
     club.user = @current_user
