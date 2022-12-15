@@ -57,7 +57,7 @@ class Api::V1::ShowsController < Api::V1::BaseController
   private
 
   def show_params
-    params.require(:show).permit(:name, :description, :date, :start_time, :end_time, :address, :club_id, :poster)
+    params.require(:show).permit(:name, :description, :date, :start_time, :end_time, :address, :club_id)
   end
 
   def set_show
