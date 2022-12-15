@@ -32,7 +32,7 @@ class Api::V1::UsersController < Api::V1::BaseController
   private
 
   def user_params
-    params.require(:user).permit(:nickname, :role, :slogan, :experience, :avatar)
+    params.require(:user).permit(:nickname, :role, :slogan, :experience)
   end
 
   def fetch_follower(user)
