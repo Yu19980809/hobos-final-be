@@ -4,4 +4,8 @@ class Club < ApplicationRecord
 
   # for holder
   belongs_to :user
+
+  # validation
+  validates :name, presence: true, uniqueness: true
+  validates :address, :description, presence: true
 end
