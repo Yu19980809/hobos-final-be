@@ -239,7 +239,7 @@ SHOWS = [
   }
 ]
 
-SHOWS.each do |show|
+SHOWS.reverse.each do |show|
   new_show = Show.new(show[:info])
   poster = URI.open(show[:poster])
   new_show.poster.attach(io: poster, filename: show[:info][:name])
