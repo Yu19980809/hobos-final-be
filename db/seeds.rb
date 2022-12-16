@@ -87,15 +87,6 @@ USERS = [
   },
   {
     info: {
-      nickname: "惠子",
-      role: "comedian",
-      slogan: "标准斜杠青年",
-      experience: "惠子有一头飘逸的长发，刚刚见面，她就表示既然有镜头，那必须掏出梳子飘柔一下。惠子本身就是即兴喜剧培训讲师，而且还有进行漫才表演，属于喜剧行业的“老人儿”了。惠子有着丰富的戏剧表演经验，但在刚刚接触脱口秀表演时，还是会有一些不适应。因为在话剧表演中，人在角色里，而脱口秀是表演者即本人，演员需要打破第四面墙，将观众容纳进来，演员在台上必须要真诚，所以惠子创作的段子是含有大量的她的观点表达的。此外，惠子还是货真价实的持证道士！相较于此，甚至环球小姐参赛者的身份都要往后排了呢~"
-    },
-    avatar: "https://hobos-final.oss-cn-shanghai.aliyuncs.com/avatar/%E6%83%A0%E5%AD%90.png"
-  },
-  {
-    info: {
       nickname: "铁锤",
       role: "comedian",
       slogan: "满身绝活儿",
@@ -129,7 +120,16 @@ USERS = [
       experience: "大炯从南京过来，来这片脱口秀的肥沃土壤进行自己进一步的脱口秀尝试。大炯发现以前创作的文本存在乱的问题，一套成熟的、被观众所接受的段子该是有结构的、规范的、主题明晰的，该是有灵魂的表达。在表演方面的难点，则需要真情实感的展现，但是紧张的情绪与感情的呈现恰好是敌对关系。所以让一切流畅起来，欠缺的是更多的登台表演，加油吧，大炯。"
     },
     avatar: "https://hobos-final.oss-cn-shanghai.aliyuncs.com/avatar/%E5%A4%A7%E7%82%AF.png"
-  }
+  },
+  {
+    info: {
+      nickname: "惠子",
+      role: "comedian",
+      slogan: "标准斜杠青年",
+      experience: "惠子有一头飘逸的长发，刚刚见面，她就表示既然有镜头，那必须掏出梳子飘柔一下。惠子本身就是即兴喜剧培训讲师，而且还有进行漫才表演，属于喜剧行业的“老人儿”了。惠子有着丰富的戏剧表演经验，但在刚刚接触脱口秀表演时，还是会有一些不适应。因为在话剧表演中，人在角色里，而脱口秀是表演者即本人，演员需要打破第四面墙，将观众容纳进来，演员在台上必须要真诚，所以惠子创作的段子是含有大量的她的观点表达的。此外，惠子还是货真价实的持证道士！相较于此，甚至环球小姐参赛者的身份都要往后排了呢~"
+    },
+    avatar: "https://hobos-final.oss-cn-shanghai.aliyuncs.com/avatar/%E6%83%A0%E5%AD%90.png"
+  },
 ]
 
 USERS.each do |user|
@@ -167,21 +167,21 @@ end
 SHOWS = [
   {
     info: {
-      name: "王炸！喜联脱口秀大赛",
-      description: "王炸！第三届全国脱口秀大赛报名结束啦！非常感谢大家报名我们的比赛，本次比赛创造了几个小小的记录：01-报名人数历届最多：本次比赛报名人数总计263人。02-报名城市最多：本次比赛收到来自33个城市的选手报名，年龄跨度最大18-71岁。03-报名女选手最多：本次比赛报名女选手最多，占总比例31%，并且首次有住在国外的中文选手出现（他将在满足隔离条件后参赛）",
-      date: "2022/12/24",
-      start_time: "19:30",
-      end_time: "22:00",
-      address: "汉口路650号亚洲大厦11楼星空间18号",
-      club: Club.find_by(name: "喜剧联合国")
+      name: "牡丹麦放开",
+      description: "什么是麦放开~?牡丹麦放开活动是仿照脱口秀开放麦的一种活动，是open-mic的“精神继承者”，与营利性演出性质的演出不同，牡丹麦放开是为参与者提供一个见证脱口秀表演诞生的活动。台上的人演笑话，台下的人看笑话。收费演出上脱口秀的段子都是之前要在麦放开（open-mic）上百上千次打磨才完成的！",
+      date: "2022/12/29",
+      start_time: "21:15",
+      end_time: "22:30",
+      address: "恒基名人购物中心4楼",
+      club: Club.find_by(name: "乐合喜剧")
     },
-    poster: "https://hobos-final.oss-cn-shanghai.aliyuncs.com/poster/%E7%8E%8B%E7%82%B8%E8%84%B1%E5%8F%A3%E7%A7%80.png"
+    poster: "https://hobos-final.oss-cn-shanghai.aliyuncs.com/poster/%E7%89%A1%E4%B8%B9%E9%BA%A6%E6%94%BE%E5%BC%80.png"
   },
   {
     info: {
       name: "牡丹麦放开",
       description: "什么是麦放开~?牡丹麦放开活动是仿照脱口秀开放麦的一种活动，是open-mic的“精神继承者”，与营利性演出性质的演出不同，牡丹麦放开是为参与者提供一个见证脱口秀表演诞生的活动。台上的人演笑话，台下的人看笑话。收费演出上脱口秀的段子都是之前要在麦放开（open-mic）上百上千次打磨才完成的！",
-      date: "2022/12/29",
+      date: "2022/12/20",
       start_time: "21:15",
       end_time: "22:30",
       address: "恒基名人购物中心4楼",
@@ -215,15 +215,15 @@ SHOWS = [
   },
   {
     info: {
-      name: "牡丹麦放开",
-      description: "什么是麦放开~?牡丹麦放开活动是仿照脱口秀开放麦的一种活动，是open-mic的“精神继承者”，与营利性演出性质的演出不同，牡丹麦放开是为参与者提供一个见证脱口秀表演诞生的活动。台上的人演笑话，台下的人看笑话。收费演出上脱口秀的段子都是之前要在麦放开（open-mic）上百上千次打磨才完成的！",
-      date: "2022/12/20",
-      start_time: "21:15",
-      end_time: "22:30",
-      address: "恒基名人购物中心4楼",
-      club: Club.find_by(name: "乐合喜剧")
+      name: "王炸！喜联脱口秀大赛",
+      description: "王炸！第三届全国脱口秀大赛报名结束啦！非常感谢大家报名我们的比赛，本次比赛创造了几个小小的记录：01-报名人数历届最多：本次比赛报名人数总计263人。02-报名城市最多：本次比赛收到来自33个城市的选手报名，年龄跨度最大18-71岁。03-报名女选手最多：本次比赛报名女选手最多，占总比例31%，并且首次有住在国外的中文选手出现（他将在满足隔离条件后参赛）",
+      date: "2022/12/24",
+      start_time: "19:30",
+      end_time: "22:00",
+      address: "汉口路650号亚洲大厦11楼星空间18号",
+      club: Club.find_by(name: "喜剧联合国")
     },
-    poster: "https://hobos-final.oss-cn-shanghai.aliyuncs.com/poster/%E7%89%A1%E4%B8%B9%E9%BA%A6%E6%94%BE%E5%BC%80.png"
+    poster: "https://hobos-final.oss-cn-shanghai.aliyuncs.com/poster/%E7%8E%8B%E7%82%B8%E8%84%B1%E5%8F%A3%E7%A7%80.png"
   },
   {
     info: {
@@ -236,10 +236,10 @@ SHOWS = [
       club: Club.find_by(name: "贰叁叁喜剧")
     },
     poster: "https://hobos-final.oss-cn-shanghai.aliyuncs.com/poster/%E8%B4%B0%E5%8F%81%E5%8F%81%E6%96%B0%E4%BA%BA%E8%B5%9B.png"
-  },
+  }
 ]
 
-SHOWS.each do |show|
+SHOWS.reverse.each do |show|
   new_show = Show.new(show[:info])
   poster = URI.open(show[:poster])
   new_show.poster.attach(io: poster, filename: show[:info][:name])
