@@ -14,5 +14,5 @@ class User < ApplicationRecord
   has_many :comedian_followings, dependent: :destroy
 
   # validation
-  validates :nickname, presence: true, uniqueness: true, length: { minimum: 2, maximum: 8, message: "长度为2~8个字符" }
+  # validates :nickname, presence: true, uniqueness: true, length: { minimum: 2, maximum: 8, message: "长度为2~8个字符" }
 end
